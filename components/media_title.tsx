@@ -1,18 +1,31 @@
+import { useEffect, useState } from "react"
+import { OMBDAPI } from "@/lib/omdb";
 
 interface MediaTitleParams {
-    mediaTitle?: Media
+    partialMediaTitle: MediaSearchResult
 }
 
-const MediaTitle = ({ mediaTitle }: MediaTitleParams) => {
+const MediaTitle = ({ partialMediaTitle }: MediaTitleParams) => {
+    const [mediaTitle, setMediaTitle] = useState<Media>(partialMediaTitle)
+
+    useEffect(() => {
+        (async () => {
+            const mediaTitle = await new OMBDAPI().get(partialMediaTitle)
+            setMediaTitle(mediaTitle)
+        })()
+    }, [partialMediaTitle]);
+
+
     if (!mediaTitle) {
         return <></>
     }
+
     return <div id="mediaTitle" className="max-h-0 grid row-span-9 col-span-2 col-start-2 divide-y">
         <div className="text-sm grid gap-4 grid-cols-[300px_auto] grid-rows-[1fr_min-content_min-content] grid-rows-3 py-4">
-            <img
+            {mediaTitle?.Poster != "N/A" && <img
                 className="row-span-3 row-start-1 col-start-1"
                 src={mediaTitle.Poster}
-                alt={mediaTitle.Poster} />
+                alt={mediaTitle.Poster} />}
             <h1 className="text-4xl row-start-1 self-end">{mediaTitle.Title}</h1>
             <div className="flex flex-row row-start-2 flex flex-row gap-1">
                 <div id="rating" className="border-radius border rounded px-2 py-1">{mediaTitle.Rated}</div>

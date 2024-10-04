@@ -9,7 +9,7 @@ const TRIP_TO_THE_MOON_RELEASE = 1902
 const SearchQuery = ({ onSearch }: SearchQueryParams) => {
 
     const queryTypes: SearchQueryTypeStrings[] = [
-        "any", "episode", "movie", "episode"
+        "any", "movie", "series", "episode"
     ]
 
     const [searchContext, setSearchContext] = useState<SearchContext>({
@@ -47,7 +47,7 @@ const SearchQuery = ({ onSearch }: SearchQueryParams) => {
             <h6 className="text-xs uppercase">{'type'}</h6>
             <div className="flex flex-row gap-3">
                 {queryTypes.map(queryType => {
-                    return <label className="text-xs capitalize">
+                    return <label className="text-xs capitalize" key={queryType}>
                         <input className="bg-zinc-500" onChange={onChange} type='radio' name="type" value={queryType} />
                         {queryType}
                     </label>

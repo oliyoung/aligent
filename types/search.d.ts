@@ -32,8 +32,10 @@ interface Media {
     Response?: string;
 }
 
+type MediaSearchResult = Pick<Media, 'Title' | 'Year' | 'imdbID' | 'Type' | 'Poster'>;
+
 interface SearchResult {
-    Search?: Media[];
+    Search?: MediaSearchResult[];
     totalResults?: number;
     Response: boolean;
     Error?: string;

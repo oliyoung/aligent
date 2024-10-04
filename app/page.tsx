@@ -1,6 +1,7 @@
 'use client'
 
 import { MediaTitle, SearchQuery, SearchResults } from "@/components";
+import { ENV } from "@/env";
 import React, { Suspense, useEffect, useState } from "react";
 
 const getSearch = async (searchContext?: SearchContext) => {
@@ -12,8 +13,8 @@ const getSearch = async (searchContext?: SearchContext) => {
     } as SearchResult
   }
 
-  const OMDBURI = new URL("http://www.omdbapi.com/")
-  OMDBURI.searchParams.set("apikey", "72d44708")
+  const OMDBURI = new URL(ENV.OMDB_URI)
+  OMDBURI.searchParams.set("apikey", ENV.OMDB_API_KEY)
   OMDBURI.searchParams.set('t', searchContext?.title)
   OMDBURI.searchParams.set('plot', 'short')
   if (searchContext?.type && searchContext.type != "any") {

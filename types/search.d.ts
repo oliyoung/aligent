@@ -33,14 +33,23 @@ interface Media {
 }
 
 interface SearchResult {
-    Search: Media[];
-    totalResults: number;
-    Response: boolean
+    Search?: Media[];
+    totalResults?: number;
+    Response: boolean;
+    Error?: string;
 }
+
+enum SearchQueryType {
+    any = 'any',
+    movie = 'movie',
+    series = 'series',
+    episode = 'episode',
+}
+
+type SearchQueryTypeStrings = keyof typeof SearchQueryType;
 
 interface SearchContext {
     title?: string;
     year?: string;
-    type?: 'any' | 'movies' | 'series' | 'episodes';
-    results: SearchResult
+    type?: SearchQueryTypeStrings;
 }

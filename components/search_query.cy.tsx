@@ -3,7 +3,6 @@ import SearchQuery from './search_query'
 
 describe('<SearchQuery />', () => {
     it('renders', () => {
-        // see: https://on.cypress.io/mounting-react
         cy.mount(<SearchQuery onSearch={() => { }} />)
         cy.get('[data-testid="searchQuery"]')
             .should('exist')
@@ -23,6 +22,7 @@ describe('<SearchQuery />', () => {
     })
 
     it('searches on searchQuery_Title change', () => {
+        cy.intercept('GET', 'http://www.omdbapi.com/*', { fixture: 'search_results.json' }).as('getSearch')
         const onSearch = cy.stub().as("onSearch")
         cy.mount(<SearchQuery onSearch={onSearch} />)
         cy.get('[data-testid="searchQuery_Title"] input').type("Test")
@@ -30,6 +30,7 @@ describe('<SearchQuery />', () => {
     })
 
     it('searches on searchQuery_Year change', () => {
+        cy.intercept('GET', 'http://www.omdbapi.com/*', { fixture: 'search_results.json' }).as('getSearch')
         const onSearch = cy.stub().as("onSearch")
         cy.mount(<SearchQuery onSearch={onSearch} />)
         cy.get('[data-testid="searchQuery_Year"]').trigger('mousedown')
@@ -37,9 +38,11 @@ describe('<SearchQuery />', () => {
     })
 
     it('searches on searchQuery_Type change', () => {
+        cy.intercept('GET', 'http://www.omdbapi.com/*', { fixture: 'search_results.json' }).as('getSearch')
         const onSearch = cy.stub().as("onSearch")
         cy.mount(<SearchQuery onSearch={onSearch} />)
         cy.get('[data-testid="movie_type"]').trigger('click')
+        // FIXME
         cy.get('@onSearch').should('be.calledWith', { title: '', type: 'any', year: '2000' })
     })
 

@@ -9,7 +9,10 @@ interface SearchResultParams {
 }
 
 const SearchResult = ({ mediaTitle, onClick }: SearchResultParams) => {
-    return <a onClick={() => onClick(mediaTitle)} className="grid grid-rows-1 grid-cols-[60px_auto] gap-2 py-4 cursor-pointer hover:bg-zinc-50 px-2">
+    return <a
+        data-testid={`searchResult_${mediaTitle.imdbID}`}
+        onClick={() => onClick(mediaTitle)}
+        className="grid grid-rows-1 grid-cols-[60px_auto] gap-2 py-4 cursor-pointer hover:bg-zinc-50 px-2">
         <div className="bg-zinc-100">
             {mediaTitle.Poster != "N/A" && <img src={mediaTitle.Poster} alt={mediaTitle.Title} className="aspect-square" />}
         </div>
@@ -24,7 +27,7 @@ const SearchResultCount = ({ results }: { results?: SearchResult }) => {
     if (!results?.totalResults || results?.totalResults === 0) {
         return <></>
     }
-    return <h2 className="text-xs uppercase">{results?.totalResults} results</h2>
+    return <h2 data-testid="searchResult_results" className="text-xs uppercase">{results?.totalResults} results</h2>
 }
 
 const SearchResults = ({ onSelect, results }: SearchResultsParams) => {

@@ -15,33 +15,34 @@ const MediaTitle = ({ partialMediaTitle }: MediaTitleParams) => {
             setMediaTitle(mediaTitle)
         })()
     }, [partialMediaTitle]);
-
+    console.log({ mediaTitle })
 
     if (!mediaTitle) {
         return <></>
     }
 
-    return <div id="mediaTitle" className=" row-span-9 col-span-2 col-start-2">
+    return <div data-testid="mediaTitle_mediaTitle" className=" row-span-9 col-span-2 col-start-2">
         <Wishlist />
-        <div className="grid  divide-y">
+        <div className="grid divide-y">
             <div className="text-sm grid gap-4 grid-cols-[300px_auto] grid-rows-[1fr_min-content_min-content] grid-rows-3 py-4">
                 {mediaTitle?.Poster != "N/A" && <img
+                    data-testid="mediaTitle_poster"
                     className="row-span-3 row-start-1 col-start-1"
                     src={mediaTitle.Poster}
                     alt={mediaTitle.Poster} />}
-                <h1 className="text-4xl row-start-1 self-end">{mediaTitle.Title}</h1>
+                <h1 data-testid="mediaTitle_title" className="text-4xl row-start-1 self-end">{mediaTitle.Title}</h1>
                 <div className="flex flex-row row-start-2 flex flex-row gap-1">
-                    <div id="rating" className="border-radius border rounded px-2 py-1">{mediaTitle.Rated}</div>
+                    <div data-testid="mediaTitle_rating" className="border-radius border rounded px-2 py-1">{mediaTitle.Rated}</div>
                     <ul className="flex flex-row gap-4 px-4 self-center">
-                        <li id="year">{mediaTitle.Year}</li>
-                        <li id="genre">{mediaTitle.Genre}</li>
-                        <li id="runtime">{mediaTitle.Runtime}</li>
+                        <li data-testid="mediaTitle_year">{mediaTitle.Year}</li>
+                        <li data-testid="mediaTitle_genre">{mediaTitle.Genre}</li>
+                        <li data-testid="mediaTitle_runtime">{mediaTitle.Runtime}</li>
                     </ul>
                 </div>
-                <div className="row-start-3" id="actors">{mediaTitle.Actors}</div>
+                <div className="row-start-3" data-testid="mediaTitle_actors">{mediaTitle.Actors}</div>
             </div>
-            <div id="plot" className="py-4">{mediaTitle.Plot}</div>
-            <div id="ratings" className="basis-auto flex flex-row divide-x py-4">
+            <div data-testid="mediaTitle_plot" className="py-4">{mediaTitle.Plot}</div>
+            <div data-testid="mediaTitle_ratings" className="basis-auto flex flex-row divide-x py-4">
                 {mediaTitle.Ratings?.map((rating, index) =>
                     <div className="rating flex-1 text-center px-8 flex flex-col gap-1" key={index}>
                         <div>{rating.Value}</div>

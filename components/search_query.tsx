@@ -53,16 +53,14 @@ const SearchQuery = ({ onSearch }: SearchQueryParams) => {
         <div id="searchQuery_Type" className="text-white">
             <h6 className="text-xs uppercase">{'type'}</h6>
             <div className="flex flex-row gap-4">
-                {queryTypes.map(queryType => {
-                    return <div className="inline-flex items-center gap-1">
-                        <label className="relative flex items-center cursor-pointer" key={queryType}>
-                            <input id={`${queryType}_type`} name="type" onChange={onChange} type='radio' value={queryType} className="peer h-3 w-3 cursor-pointer appearance-none rounded-full border border-zinc-300 checked:border-zinc-300 transition-all" />
-                            <span className="absolute bg-zinc-300 w-2 h-2 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity duration-200 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                            </span>
-                        </label>
-                        <span className="inline-block capitalize text-xs">{queryType}</span>
-                    </div>
-                })}
+                {queryTypes.map(queryType => <div className="inline-flex items-center gap-1">
+                    <label className="relative flex items-center cursor-pointer" key={queryType}>
+                        <input id={`${queryType}_type`} name="type" onChange={onChange} type='radio' value={queryType} defaultChecked={queryType === 'any'} className="peer h-3 w-3 cursor-pointer appearance-none rounded-full border border-zinc-300 checked:border-zinc-300 transition-all" />
+                        <span className="absolute bg-zinc-300 w-2 h-2 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity duration-200 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                        </span>
+                    </label>
+                    <span className="inline-block capitalize text-xs">{queryType}</span>
+                </div>)}
             </div>
         </div>
     </div>

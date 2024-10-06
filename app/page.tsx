@@ -17,7 +17,7 @@ export default function Home() {
   }, [searchContext]);
 
   return (
-    <div className="w-screen h-screen grid gap-2 grid-cols-[320px_auto] grid-rows-[60px_auto]">
+    <div className="w-screen h-screen grid grid-cols-[320px_auto] grid-rows-[60px_auto]">
       <SearchQuery onSearch={setSearchContext} />
       <SearchResults results={searchResult} onSelect={setSelectedTitle} />
       <Suspense fallback={<div>Loading...</div>}>

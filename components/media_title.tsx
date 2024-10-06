@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { OMBDAPI } from "@/lib/omdb";
+import Wishlist from "@/components/wishlist";
 
 interface MediaTitleParams {
     partialMediaTitle: MediaSearchResult
@@ -21,6 +22,7 @@ const MediaTitle = ({ partialMediaTitle }: MediaTitleParams) => {
     }
 
     return <div id="mediaTitle" className="max-h-0 grid row-span-9 col-span-2 col-start-2 divide-y">
+        <Wishlist />
         <div className="text-sm grid gap-4 grid-cols-[300px_auto] grid-rows-[1fr_min-content_min-content] grid-rows-3 py-4">
             {mediaTitle?.Poster != "N/A" && <img
                 className="row-span-3 row-start-1 col-start-1"

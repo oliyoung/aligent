@@ -27,13 +27,13 @@ const SearchQuery = ({ onSearch }: SearchQueryParams) => {
         }))
     }
 
-    useEffect(() => {
+    useEffect(() =>
         onSearch(searchContext)
-    }, [searchContext]);
+        , [searchContext]);
 
     return <div id="searchQuery" className="bg-zinc-500 col-span-3 col-start-1 grid grid-cols-4 content-center">
-        <div id="searchQuery_Title" className=" col-span-2 flex flex-row px-4 items-center min-w-full ">
-            <MagnifyingGlassIcon width={30} height={30} className="text-white fill-white stroke-white" />
+        <div id="searchQuery_Title" className=" col-span-2 flex flex-row px-4 items-center min-w-full gap-2 ">
+            <MagnifyingGlassIcon width={15} height={15} className="text-white fill-white stroke-white" />
             <input name='title' onChange={onChange} className="w-full text-white bg-zinc-500 p-2 focus:outline-none focus:ring-none focus:border-none" type="search" />
         </div>
         <div id="searchQuery_Year" className="text-white">

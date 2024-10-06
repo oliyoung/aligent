@@ -15,7 +15,6 @@ const MediaTitle = ({ partialMediaTitle }: MediaTitleParams) => {
             setMediaTitle(mediaTitle)
         })()
     }, [partialMediaTitle]);
-    console.log({ mediaTitle })
 
     if (!mediaTitle) {
         return <></>

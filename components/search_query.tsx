@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid'
 
-
 interface SearchQueryParams {
     onSearch: (searchContext: SearchContext) => void
 }

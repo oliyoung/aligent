@@ -4,7 +4,7 @@
 
 This project is a movie/series search application built using Next.js and the OMDB API. It allows users to search for titles, view details, and manage a watchlist. The goal was to deliver a user-friendly solution with a focus on code quality and future scalability in a time and resource bound environment.
 
-[screenshot](./screenshot.jpg)
+[screenshot](https://github.com/oliyoung/aligent/blob/7c4b161c8b594a826a283f493509165619dcf3bb/screenshot.png)
 
 # What I Did
 

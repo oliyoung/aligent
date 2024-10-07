@@ -8,7 +8,7 @@ This project is a movie/series search application built using Next.js and the OM
 
 ## NextJS
 
-I chose `Next.js` for its flexible rendering options, built-in support for features like API routes and i18n, easy Tailwind CSS integration, and performance optimizations like automatic code splitting, making it ideal for building scalable React apps (even though I didn't use most of those features in this project). I also chose to complete this assessment with only client side rendering for simplicity, but I would consider implmenting SSR for future upgrades.
+I chose `Next.js` for its flexible rendering options, built-in support for features like API routes and i18n, easy Tailwind CSS integration, and performance optimizations like automatic code splitting, making it ideal for building scalable React apps (even though I didn't use most of those features in this project). While, I chose to complete this assessment with only client side rendering for simplicity, I would consider implmenting SSR for future upgrades.
 
 ## Cypress
 
@@ -53,7 +53,7 @@ While I included shallow suite of component tests, I would emphasize the importa
 ## Other missing features
 
 * Accessibility (A11y) - Images do have `alt` tags, but this isn't sufficient for a modern application. I'd add ARIA labels, keyboard navigation and possibly test with screen readers.
-* Error Handling - There is no error handling, a network failure or similar would currently provide a bad UX.
+* Error Handling - There is no error handling, a network failure or similar would currently provide a bad UX. Movies without images show a grey box.
 * Loading, Zero and Null States - Provide more visual feedback about the application's activity
 * Responsive design
 * Performance optimisation - implementing `SWR` or `react-query` or even using some kind of state management.

@@ -58,6 +58,7 @@ While I included shallow suite of component tests, I would emphasize the importa
 * Responsive design
 * Performance optimisation - implementing `SWR` or `react-query` or even using some kind of state management.
 * Dark Mode
+* Deep Linking - Using `window.popstate()` and `window.pushstate()` I would implement deep linking to movie titles on search queries.
 
 
 

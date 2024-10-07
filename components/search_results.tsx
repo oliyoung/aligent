@@ -34,7 +34,7 @@ const SearchResults = ({ onSelect, results }: SearchResultsParams) => {
     return <div className="overflow-y-visible p-8 flex flex-col gap-12">
         <SearchResultCount results={results} />
         <div className="flex flex-col divide-y divide-solid">
-            {results?.Search?.map((result, index) =>
+            {results?.Search?.slice(0, 8).map((result, index) =>
                 <SearchResult onClick={onSelect} mediaTitle={result} key={index} />
             )}
         </div>

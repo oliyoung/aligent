@@ -21,7 +21,7 @@ export default function Home() {
       <SearchQuery onSearch={setSearchContext} />
       <SearchResults results={searchResult} onSelect={setSelectedTitle} />
       <Suspense fallback={<div>Loading...</div>}>
-        {selectedTitle && <MediaTitle partialMediaTitle={selectedTitle} />}
+        {selectedTitle && <MediaTitle mediaSearchResult={selectedTitle} />}
       </Suspense>
     </div>
   );

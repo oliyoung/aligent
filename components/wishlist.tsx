@@ -5,7 +5,7 @@ import { useCallback } from "react";
 
 const Wishlist = ({ imdbID }: Required<Pick<Media, 'imdbID'>>) => {
     const [wishlistArray, setWishlist] = useLocalStorage<string[]>("wishlist", []);
-    const wishlist = new Set(wishlistArray)
+    const wishlist = new Set(Array.from(wishlistArray))
 
     const addToWishlist = useCallback(() => {
         wishlist.add(imdbID)

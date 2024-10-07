@@ -3,25 +3,25 @@ import { OMBDAPI } from "@/lib/omdb";
 import Wishlist from "@/components/wishlist";
 
 interface MediaTitleParams {
-    partialMediaTitle: MediaSearchResult
+    mediaSearchResult: MediaSearchResult
 }
 
-const MediaTitle = ({ partialMediaTitle }: MediaTitleParams) => {
-    const [mediaTitle, setMediaTitle] = useState<Media>(partialMediaTitle)
+const MediaTitle = ({ mediaSearchResult }: MediaTitleParams) => {
+    const [mediaTitle, setMediaTitle] = useState<Media>(mediaSearchResult)
 
     useEffect(() => {
         (async () => {
-            const mediaTitle = await new OMBDAPI().get(partialMediaTitle)
+            const mediaTitle = await new OMBDAPI().get(mediaSearchResult)
             setMediaTitle(mediaTitle)
         })()
-    }, [partialMediaTitle]);
+    }, [mediaSearchResult]);
 
     if (!mediaTitle) {
         return <></>
     }
 
-    return <div data-testid="mediaTitle_mediaTitle" className=" row-span-9 col-span-2 col-start-2">
-        <Wishlist />
+    return <div data-testid="mediaTitle_mediaTitle" className="row-span-9 col-span-2 col-start-2 relative">
+        {mediaTitle.imdbID && <Wishlist imdbID={mediaTitle.imdbID} />}
         <div className="grid divide-y">
             <div className="text-sm grid gap-4 grid-cols-[300px_auto] grid-rows-[1fr_min-content_min-content] grid-rows-3 py-4">
                 {mediaTitle?.Poster != "N/A" && <img

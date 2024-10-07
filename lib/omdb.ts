@@ -1,6 +1,12 @@
 export class OMBDAPI {
     api: URL;
 
+    emptySearchResult: SearchResult = {
+        Search: [],
+        totalResults: 0,
+        Response: true
+    }
+
     constructor() {
         this.api = new URL(process.env.NEXT_PUBLIC_OMDB_URI!)
         this.api.searchParams.set("apikey", process.env.NEXT_PUBLIC_OMDB_API_KEY!)
@@ -8,25 +14,16 @@ export class OMBDAPI {
 
     async get(partialMediaTitle: MediaSearchResult) {
         if (!partialMediaTitle?.imdbID) {
-            return {
-                Search: [],
-                totalResults: 0,
-                Response: true
-            } as SearchResult
+            return this.emptySearchResult
         }
         this.api.searchParams.set('i', partialMediaTitle?.imdbID)
         this.api.searchParams.set('plot', 'short')
         return this.fetch()
     }
 
-
     async search(searchContext: SearchContext): Promise<SearchResult> {
         if (!searchContext?.title || searchContext.title.length < 3) {
-            return {
-                Search: [],
-                totalResults: 0,
-                Response: true
-            } as SearchResult
+            return this.emptySearchResult
         }
         this.api.searchParams.set('s', searchContext?.title)
         if (searchContext?.type && searchContext.type != "any") {

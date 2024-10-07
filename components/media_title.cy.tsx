@@ -6,7 +6,7 @@ describe('<MediaTitle />', () => {
     it('renders', () => {
         const imdbID = 'tt0368226'
         cy.intercept('GET', 'http://www.omdbapi.com/*', { fixture: 'media.json' }).as('getMedia')
-        cy.mount(<MediaTitleComponent partialMediaTitle={{ imdbID }} />)
+        cy.mount(<MediaTitleComponent mediaSearchResult={{ imdbID }} />)
         cy.get('[data-testid="mediaTitle_title"]')
             .should('exist')
             .should('be.visible')
